@@ -867,7 +867,7 @@ class blog_model extends Models {
 
 ## Security
 
-  Security library provide basic security feature to the web application. aarc framework provide CSRF, XSS and SQL Injection protection.
+  Security library provide basic security feature to the web application. flash framework provide CSRF, XSS and SQL Injection protection.
 
 #### SQL Injection
 
