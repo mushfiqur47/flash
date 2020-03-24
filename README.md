@@ -21,11 +21,6 @@ Flash allows user to create web applications in easy and simplest way, in Flash 
   - Easy to deploy.
 
 
-## User Guide
-
-  - [Learn more from Flash Documentation](docs/README.md)
-
-
 ## Installation
 
   Flash web framework is for PHP, so it's requires PHP 5.6 or newer. now you won’t need to setup anything just yet.
@@ -70,6 +65,11 @@ $urlpatterns=[
 ];
 ```
   Now a simple hello world web app is created.
+
+
+## Documentation
+
+  - [Learn more from Flash Documentation](docs/README.md)
 
 
 ## License
