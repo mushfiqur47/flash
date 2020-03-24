@@ -12,16 +12,16 @@ Flash is fast and lightweight web framework.
 
 Flash allows user to create web applications in easy and simplest way, in Flash framework user can create their own services and library.
 
-### why flash framework
+### Why flash framework
 
 Flash is fast and lightweight php web framework. Flash framework is very simple and easy to learn. even if you are new in web development don't worry you will love this framework.
 
-  - Flash is fast and powerfull web framework.
-  - It is simple and easy to learn.
-  - It support custom libraries and services.
+  - Flash is fast and powerful web framework.
+  - It's very simple and easy to learn.
   - It is based on MVT Arhitecture.
-  - Easy to create API Services.
-  - Easy to deploy.
+  - It support custom libraries and services.
+  - Easy to create API and Web Services.
+  - Easy to deploy on any server.
 
 ### Flash architecture
 
@@ -63,16 +63,3 @@ The Template is a presentation layer which handles User Interface part. The View
 
 #### templates directory
   templates directory contains all your HTML template files.
-
-
-## Installation
-
-  Flash web framework is for PHP, so it's requires PHP 5.6 or newer. now you won’t need to setup anything just yet.
-
-### Flash can be installed in few steps:
-
-  - [Download](https://github.com/rajkumardusad/flash/archive/master.zip) the Flash files.
-  - Unzip the package.
-  - Upload all the Flash folders and files (system, application, .htaccess, index.php) on the server.
-
-  That's it, in the Flash web framework there is nothing to configure and setup. it's always ready to go.
