@@ -69,7 +69,7 @@ $urlpatterns=[
 
 ## Documentation
 
-  - [Learn more from Flash Documentation](docs/README.md)
+  - ***Learn more from Flash** [Documentation](docs/README.md)
 
 
 ## License
