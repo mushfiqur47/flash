@@ -23,7 +23,7 @@ Flash allows user to create web applications in easy and simplest way, in Flash 
 
 - [Introduction](Introduction.md)
   - [What is flash framework](Introduction.md#What-is-flash-framework)
-  - [why flash framework](Introduction.md#why-flash-framework)
+  - [Why flash framework](Introduction.md#Why-flash-framework)
   - [Flash architecture](Introduction.md#Flash-architecture)
   - [Directory Structure](Introduction.md#Directory-Structure-of-Flash)
 - [Installation](Installation.md)
