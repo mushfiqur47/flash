@@ -23,7 +23,7 @@ Flash allows user to create web applications in easy and simplest way, in Flash 
 
 ## User Guide
 
-  - Learn more from Flash Documentation.(docs/README.md)
+  - [Learn more from Flash Documentation](docs/README.md)
 
 
 ## Installation
