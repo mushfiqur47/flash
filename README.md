@@ -70,7 +70,7 @@ $urlpatterns=[
 ## Documentation
 
   - **Learn more about Flash from [Documentation](docs/README.md) file.**
-
+  - **Documentation : https://rajkumardusad.github.io/flash**
 
 ## License
 
