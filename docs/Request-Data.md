@@ -3,7 +3,7 @@
   Get all HTTP Request data.
 
 
-#### GET Data
+#### GET Request
 
 ```php
 //GET Request Data
@@ -13,7 +13,7 @@ $this->get->var_name;
   Get all GET Request data.
 
 
-#### POST Data
+#### POST Request
 
 ```php
 //POST Request Data
@@ -23,7 +23,7 @@ $this->post->var_name;
   Get all POST Request data.
 
 
-#### PUT Data
+#### PUT Request
 
 ```php
 //PUT Request Data
@@ -33,7 +33,7 @@ $this->put->var_name;
   Get all PUT Request data.
 
 
-#### DELETE Data
+#### DELETE Request
 
 ```php
 //DELETE Request Data
