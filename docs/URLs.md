@@ -65,9 +65,9 @@ class view extends Controller {
 /product/3
 ```
 
-### Include URls
+### Include URLs
 
-  Include your application URls file in main URLs file.
+  Include your application URLs file in main URLs file.
 
 ```php
 $urlpatterns=[
