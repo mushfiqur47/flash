@@ -39,6 +39,7 @@ Flash allows user to create web applications in easy and simplest way, in Flash 
   - [Map Urls with Views](URLs.md#Map-Urls-with-Views)
   - [URL patterns and slug](URLs.md#URL-patterns-and-slug)
   - [Regular Expressions](URLs.md#Regular-Expressions)
+  - [Include URLs](URLs.md#Include-URLs)
 - [Models](Models.md)
   - [Create Models](Models.md#Create-a-model)
   - [Use Database](Models.md#Use-Database)
