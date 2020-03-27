@@ -6,6 +6,14 @@
 
   - [Download](https://github.com/rajkumardusad/flash/archive/master.zip) the Flash files.
   - Unzip the package.
-  - Upload all the Flash folders and files (system, application, .htaccess, index.php) on the server.
+  - Upload all the Flash folders and files (application, system, .htaccess, index.php) on the server.
+
+```
+  /public_html
+    /application
+    /system
+    .htaccess
+    index.php
+```
 
   That's it, in the Flash web framework there is nothing to configure and setup. it's always ready to go.
