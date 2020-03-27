@@ -101,7 +101,6 @@ $urlpatterns=[
   Now a simple hello world web app is created.
 
 
-
 ## Simple Web Api Example
 
   A simple `Hello, World` web Api in Flash web framework.
