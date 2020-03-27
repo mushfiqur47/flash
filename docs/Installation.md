@@ -10,10 +10,10 @@
 
 ```
   /public_html
-    /application
-    /system
-    .htaccess
-    index.php
+      /application
+      /system
+      .htaccess
+      index.php
 ```
 
   That's it, in the Flash web framework there is nothing to configure and setup. it's always ready to go.
