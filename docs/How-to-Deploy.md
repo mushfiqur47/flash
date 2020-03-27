@@ -2,15 +2,15 @@
 
   It's very easy to deploy Flash web application.
 
-  - it's requires PHP.
+  - It's requires PHP.
   - Upload your Flash files and directory on the server.
 
 ```
  /public_html
       /application
       /system
-      /.htaccess
-      /index.php
+      .htaccess
+      index.php
 ```
 
   Now you Flash web application is ready to go.
