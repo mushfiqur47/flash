@@ -31,7 +31,7 @@ class view extends Views {
 
 ### Response data
 
-  response simple string data :
+  **Response simple string data :**
 
 ```php
 class view extends Views {
@@ -42,24 +42,57 @@ class view extends Views {
 }
 ```
 
-  response simple string data with response code :
+  **Response simple string data with http response code :**
 
 ```php
 class view extends Views {
   function hello_world() {
-    //Response string data with response code
+    //Response string data with http response code
     return $this->response("404 Page not found !!", 404);
   }
 }
 ```
 
-  response http response code :
+### Json Response
+
+  Response json data for api response :
 
 ```php
 class view extends Views {
   function hello_world() {
+    //Response json data
+    return $this->response_json(array("data" => "hello world"));
+  }
+}
+```
+
+### Set http response code :
+
+  Set Http Response status code :
+```php
+class view extends Views {
+  function hello_world() {
+
     //Response http response code
     return $this->response_code(404);
+
+  }
+}
+```
+
+### Set http response header
+
+  Set Http Response header :
+
+```php
+class view extends Views {
+  function hello_world() {
+
+    //Set Response Header
+    $this->response_header("Content-Type: application/json");
+
+    //Response data
+    return $this->response("<h1>hello world</h1>");
   }
 }
 ```
