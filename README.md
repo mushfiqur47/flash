@@ -64,13 +64,54 @@ $urlpatterns=[
   '/' => 'view.hello_world',
 ];
 ```
+
   Now a simple hello world web app is created.
+
+
+## Simple Web Api Example
+
+  A simple `Hello, World` web Api in Flash web framework.
+
+### Create View
+
+  Let’s write the first view. Open the `app/views.php` file and put the following PHP code in it:
+
+```php
+class view extends Views {
+  function hello_world() {
+    $data = [
+      'status' => true,
+      'data' => 'Hello, World',
+    ];
+    //Send Json Response
+    return $this->response_json($data);
+  }
+}
+```
+
+  Hello world view is created now map this view with URLs.
+
+### Map URLs with Views
+
+  Let's create URL and map with views. open `app/urls.php` file and put the following code in it:
+
+```php
+//include views to route URLs
+require_once("views.php");
+
+$urlpatterns=[
+  '/' => 'view.hello_world',
+];
+```
+
+  Now a simple `Hello, World` web Api is created.
 
 
 ## Documentation
 
   - **Learn more about Flash from [Documentation](docs/README.md) file.**
   - **Documentation : https://rajkumardusad.github.io/flash**
+
 
 ## License
 
