@@ -7,9 +7,6 @@
   Configure your databse settings in settings file.
 
 ```php
-//Initialize database connection
-$connect=['db'];
-
 $db['db']= [
     'dsn' => '',
     'hostname' => 'localhost',
