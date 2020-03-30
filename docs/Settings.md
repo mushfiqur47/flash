@@ -46,20 +46,6 @@ $install = [
 ];
 ```
 
-  **Initialize Database Connection**
-
-  Initialize your database connection.
-
-```php
-//Initialize database connection
-$connect = [
-  'db',
-  'blog_db',
-];
-```
-
-  Add your databse in the `connect` array to initialize database connection.
-
   **Database Configuration**
 
 ```php
