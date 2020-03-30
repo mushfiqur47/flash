@@ -38,31 +38,23 @@ $db['db']= [
 
   Configure your database settings and initialize database connection.
 
-  **Initialize database connection**
-
-```php
-//Initialize database connection
-$connect = [
-  'db',
-  'blog_db',
-];
-```
-
-  Add your databse in the `connect` array to initialize database connection.
-
-**Manually Initialize database connection**
-
 ```php
 class model Models {
   function blog() {
     //initialize database
     $this->connect('db');
     $this->connect('blog_db');
+
+    //OR
+    $this->connect('db', 'blog_db');
+
+    //close database connection
+    $this->db->close();
+    $this->blog_db->close();
   }
 }
 ```
 
-  Flash framework automatically create new database connection from settings.
 
 #### Database Query
 
@@ -71,8 +63,11 @@ class model Models {
 ```php
 class blog_model extends Models {
   function get_data() {
+    $this->connect('blog_db');
     //select data from blog_db
-    return $this->blog_db->query('select * from blog');
+    $result = $this->blog_db->query('select * from blog');
+    $this->blog_db->close();
+    return $result;
   }
 }
 ```
