@@ -12,7 +12,14 @@ class blog extends Models {
   private $author;
   private $date;
   function get_data() {
+    //create database connection
+    $this->connect('db');
+
     $result = $this->db->query('select * from blog');
+
+    //close database connection
+    $this->db->close();
+
     return $result;
   }
 }
@@ -24,6 +31,10 @@ class blog extends Models {
 
 ```php
 class blog extends Models {
+  function __construct() {
+    $this->connect('blog_db');
+  }
+
   function get_data() {
     //select data from database
     $result = $this->blog_db->query('select * from blog');
@@ -37,15 +48,21 @@ class blog extends Models {
 }
 ```
 
-  **Manually create database connection**
+### Use Model
+
+  Use models in views to use database in your application.
 
 ```php
-class blog extends Models {
-  function get_data() {
-    //create database connection
-    $this->connect('blog_db');
-    //select data from database
-    return $this->blog_db->query('select * from blog');
+class view extends Views{
+  function home() {
+    //create model object
+    $blog = new blog();
+    //get data from model
+    foreach($blog->get_data() as $data) {
+      $blog_data[] = $data;
+    }
+    //response data
+    return $this->response($blog_data);
   }
 }
 ```
