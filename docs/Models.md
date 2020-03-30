@@ -27,7 +27,7 @@ class blog extends Models {
 
 ### Use Database
 
-  Create database connection in settings file and access database in models.
+  Create database connection in model.
 
 ```php
 class blog extends Models {
