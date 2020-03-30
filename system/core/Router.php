@@ -59,7 +59,7 @@ class Router{
   * Load Views
   * Load Views load user views
   */
-  protected function load_view(array $views,array $pathVariables=NULL) {
+  protected function load_view(array $views, array $pathVariables=NULL) {
     //Check view class exists or not
     if(class_exists($views['class'])) {
       //Create view object
@@ -67,6 +67,8 @@ class Router{
       $method=$views['method'];
       //Check in views class method exists or not
       if(method_exists($this->view, $method)) {
+        //Initialize view
+        $this->view->__init();
         //Call the views method
         $this->view->$method(...$pathVariables);
       } else {

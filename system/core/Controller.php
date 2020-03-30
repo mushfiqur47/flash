@@ -56,9 +56,12 @@ class Views{
   public $static;
   //Media directory path.
   public $media;
-  function __construct() {
+
+  //Initialize all objects.
+  function __init() {
     //Initialize Configuration object.
     $this->config=new Config();
+
     /**
     * URI Library
     * Initialize object of system URI library.
@@ -70,6 +73,7 @@ class Views{
     $this->static=$this->uri->static();
     //Get site media directory path.
     $this->media=$this->uri->media();
+
     /**
     * Input Library
     * Initialize all objects of system input library.
@@ -234,6 +238,7 @@ class Views{
         ${$variable}=$value;
       }
     }
+
     //Check template exists or not.
     foreach($this->config->template as $template_dir) {
       //Get template directory path
@@ -247,6 +252,7 @@ class Views{
         $template_path=$templates.'/'.$template.'.html';
       }
     }
+
     //Render html templates.
     if($template_path) {
       return require_once($template_path);
