@@ -53,6 +53,9 @@ class blog extends Models {
   Use models in views to use database in your application.
 
 ```php
+//Include models file
+require_once('models.php');
+
 class view extends Views{
   function home() {
     //create model object
