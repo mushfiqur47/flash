@@ -122,9 +122,6 @@ $template = [
 * Add your database connection to communicate with database.
 */
 
-//Initialize database connection
-$connect = ['db'];
-
 $db['db'] = [
     'dsn' => '',
     'hostname' => 'localhost',
