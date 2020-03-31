@@ -81,4 +81,20 @@ class URI{
       return $media;
     }
   }
+
+  //Build absolute URLs
+  public function build_absolute_uri(string $path=NULL) {
+    $base_url = rtrim($this->base_url, '/');
+    //Generate URLs
+    if($path) {
+      $base_url.='/'.ltrim($path,'/');
+      if(isset($base_url)) {
+        return $base_url;
+      } else {
+        return FALSE;
+      }
+    } else {
+      return $base_url;
+    }
+  }
 }

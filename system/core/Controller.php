@@ -162,7 +162,7 @@ class Views{
     if($http_response_code) {
       header($header,$replace,$http_response_code);
     } else {
-      header($header,$replace);
+      header($header, $replace);
     }
   }
 
@@ -173,6 +173,29 @@ class Views{
   protected function response_code(int $response_code) {
     //Set HTTP Response code
     http_response_code($response_code);
+  }
+
+  /**
+  * Redirect URLs
+  * Redirect users to another page.
+  */
+  protected function redirect(string $url=NULL,string $method=NULL, $response_code=NULL) {
+    //Set HTTP response code
+    if($response_code) {
+      http_response_code($response_code);
+    }
+    //IIS environment use 'refresh' for better compatibility
+    if($method && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== FALSE) {
+      $method = 'refresh';
+    }
+    //Redirect URLs
+    if($url && $method) {
+      if(strtolower($method)==='refresh') {
+        header("Refresh: 0; url=$url");
+      }
+    } else {
+      header("Location: $url");
+    }
   }
 
   /**
