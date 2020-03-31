@@ -210,61 +210,6 @@ class request{
 
   }
 
-  //Build absolute URLs
-  public function build_absolute_uri(string $path=NULL) {
-    //Get Scheme HTTP or HTTPS
-    $scheme=$this->scheme.'://';
-
-    //Get server hostname and port
-    if(isset($_SERVER['HTTP_HOST'])) {
-      $scheme.=$_SERVER['HTTP_HOST'];
-    } else if(isset($_SERVER['SERVER_NAME']) && isset($_SERVER['SERVER_POST'])){
-      $scheme.=$_SERVER['SERVER_NAME'].$_SERVER['SERVER_PORT'];
-    }
-
-    //Generate URLs
-    if($path) {
-      $scheme.='/'.ltrim($path,'/');
-      if(isset($scheme)) {
-        return $scheme;
-      } else {
-        return FALSE;
-      }
-    } else {
-      return $scheme;
-    }
-  }
-
-  //Redirect URLs
-  public function redirect(string $url=NULL,string $method=NULL, $response_code=NULL) {
-    //Set HTTP response code
-    if($response_code) {
-      http_response_code($response_code);
-    }
-    //IIS environment use 'refresh' for better compatibility
-    if($method && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== FALSE) {
-      $method = 'refresh';
-    }
-    //Redirect URLs
-    if($url && $method) {
-      if(strtolower($method)==='refresh') {
-        header("Refresh: 0; url=$url");
-      }
-    } else {
-      header("Location: $url");
-    }
-  }
-
-  //Set Header
-  public function set_header(string $header, bool $replace=TRUE, int $http_response_code=NULL) {
-    //HTTP header
-    if($http_response_code) {
-      header($header,$replace,$http_response_code);
-    } else {
-      header($header,$replace);
-    }
-  }
-
   //Get server array
   public function server($server_index) {
     $server_index=strtoupper($server_index);
