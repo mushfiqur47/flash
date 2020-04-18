@@ -280,7 +280,7 @@ class Views{
     if($template_path) {
       return require_once($template_path);
     } else {
-      exit("'$template' : template not exists");
+      exit("'$template' : template does not exists");
     }
   }
 }
