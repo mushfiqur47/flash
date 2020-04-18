@@ -125,8 +125,8 @@ class security{
   * XSS Protection
   * Provide XSS Protection with XSS Clean.
   */
-  public function xss_clean(string $string) {
+  public function xss_clean(string $xss_string) {
     //Convert all characters to HTML entities
-    return htmlentities($string, ENT_QUOTES | ENT_IGNORE);
+    return htmlentities($xss_string, ENT_QUOTES | ENT_IGNORE);
   }
 }
