@@ -177,6 +177,14 @@ class view extends Views {
   - `server_signature` : String containing the server version and virtual host name which are added to server-generated pages, if enabled.
   - `document_root` : The document root directory under which the current script is executing, as defined in the server's configuration file.
 
+**Path Information**
+
+  - `uri` : The URI which was given in order to access this page; for instance, '/index.html'.
+  - `request_uri` : The URI which was given in order to access this page; for instance, '/index.html'.
+  - `url` : absolute URL of current request.
+  - `path` : path of current request.
+  - `path_info` : path of current request with query string.
+
   **Request Information**
 
   - `is_secure` : TRUE if the current request is https.
@@ -200,14 +208,6 @@ class view extends Views {
   - `is_view` : TRUE if the current request is VIEW.
   - `is_http` : TRUE if the current request is http.
   - `is_https` : TRUE if the current request is https.
-
-  **Path Information**
-
-  - `url` : absolute URL of current request.
-  - `uri` : The URI which was given in order to access this page; for instance, '/index.html'.
-  - `request_uri` : The URI which was given in order to access this page; for instance, '/index.html'.
-  - `path` : path of current request.
-  - `path_info` : path of current request with query string.
 
   **User Information**
 
