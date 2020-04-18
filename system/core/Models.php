@@ -41,6 +41,7 @@ class Models{
       exit("Invalid database setting array");
     }
 
+    //Get dbname
     if(is_array($dbname)) {
       $db_name = $dbname;
     } else {
@@ -48,7 +49,7 @@ class Models{
     }
 
     //Parse database settings
-      $this->db_setting = $this->parse_db($db_setting, $db_name);
+    $this->db_setting = $this->parse_db($db_setting, $db_name);
 
     //Initialize database connection
     $this->load_driver($this->db_setting, $db_name);
