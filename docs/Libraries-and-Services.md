@@ -152,21 +152,22 @@ class view extends Views {
   - `scheme` : Request scheme http or https.
   - `method` : Which request method was used to access the page; e.g. 'GET', 'HEAD', 'POST', 'PUT'.
   - `protocol` : Name and revision of the information protocol via which the page was requested e.g. 'HTTP/1.0'.
-  - `host` : The HTTP Host header sent by the client.
   - `accept` : Acceptable content types for the response. 
   - `language` : Acceptable languages for the response. Example: 'en'.
   - `encoding` : Acceptable encodings for the response. Example: 'gzip'.
   - `connection` : header from the current request, if there is one. Example: 'Keep-Alive'.
-  - `referer` : The address of the page (if any) which referred the user agent to the current page. This is set by the user agent. Not all user agents will set this, and some provide the ability to modify HTTP_REFERER as a feature. In short, it cannot really be trusted.
   - `content_type` : A string representing the MIME type of the request, parsed from the CONTENT_TYPE header.
   - `content_length` : The length of the request body (as a string).
-  - `user_agent` : This is a string denoting the user agent being which is accessing the page. A typical example is: Mozilla/4.5 [en] (X11; U; Linux 2.2.9 i586). 
+  - `user_agent` : This is a string denoting the user agent being which is accessing the page. A typical example is: Mozilla/4.5 [en] (X11; U; Linux 2.2.9 i586).
+  - `referer` : The address of the page (if any) which referred the user agent to the current page. This is set by the user agent. Not all user agents will set this, and some provide the ability to modify HTTP_REFERER as a feature. In short, it cannot really be trusted.
   - `headers` : Fetch all HTTP request headers.
 
   **Server Information**
 
   - `hostname` : The Host name from which the user is viewing the current page.
+  - `host` : The HTTP Host header sent by the client.
   - `port` : The port on the server machine being used by the web server for communication. For default setups, this will be '80'; using SSL, for instance, will change this to whatever your defined secure HTTP port is.
+  - `server_software` : Server identification string, given in the headers when responding to requests.
 
   **Request Information**
 
