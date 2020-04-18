@@ -170,19 +170,19 @@ class Views{
   * Response Code
   * Set HTTP response status code.
   */
-  protected function response_code(int $response_code) {
+  protected function response_code(int $http_response_code) {
     //Set HTTP Response code
-    http_response_code($response_code);
+    http_response_code($http_response_code);
   }
 
   /**
   * Redirect URLs
   * Redirect users to another page.
   */
-  protected function redirect(string $url=NULL,string $method=NULL, $response_code=NULL) {
+  protected function redirect(string $url=NULL, string $method=NULL, int $http_response_code=NULL) {
     //Set HTTP response code
-    if($response_code) {
-      http_response_code($response_code);
+    if($http_response_code) {
+      http_response_code($http_response_code);
     }
     //IIS environment use 'refresh' for better compatibility
     if($method && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== FALSE) {
@@ -202,10 +202,10 @@ class Views{
   * Response
   * Render string data with HTTP Response status code.
   */
-  protected function response($string=NULL, int $response_code=NULL) {
-    if(!empty($response_code) && is_int($response_code)) {
+  protected function response($string=NULL, int $http_response_code=NULL) {
+    if($http_response_code) {
       //HTTP Response code
-      http_response_code($response_code);
+      http_response_code($http_response_code);
     }
     //Render string data.
     if($string) {
@@ -220,7 +220,7 @@ class Views{
   
   /**
   * Json Data
-  * Check Data is valid json format or not.
+  * Check Json format is valid or not.
   */
   protected function is_json($data) {
     return is_array($data) ? false : is_array(json_decode($str,true));
@@ -230,12 +230,12 @@ class Views{
   * Response
   * Render json data with HTTP Response status code.
   */
-  protected function response_json($data=NULL, int $response_code=NULL) {
+  protected function response_json($data=NULL, int $http_response_code=NULL) {
     //Set header content type for json response.
     header('Content-type: application/json');
-    if(!empty($response_code) && is_int($response_code)) {
+    if($http_response_code) {
       //HTTP Response code
-      http_response_code($response_code);
+      http_response_code($http_response_code);
     }
     //Render json data.
     if($data) {
