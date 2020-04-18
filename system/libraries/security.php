@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct access allowed');
 class security{
   //Initialize all security variable
   function __construct() {
-    //Set csrf cookie
+    //Set csrf_token cookie
     setcookie('csrf_token','',time()+(60*30),'/');
   }
 
@@ -49,7 +49,7 @@ class security{
       }
     }
     //Check token is generated or not
-    if((isset($_COOKIE['csrf_token']) || isset($_SESSION['csrf_token'])) && isset($token)) {
+    if((isset($_COOKIE['csrf_token']) && isset($token) || isset($_SESSION['csrf_token'])) && isset($token)) {
       return $token;
     } else {
       return FALSE;
@@ -74,7 +74,7 @@ class security{
       }
     }
     //Check token is generated or not
-    if((isset($_COOKIE['csrf_token']) || isset($_SESSION['csrf_token'])) && isset($token)) {
+    if((isset($_COOKIE['csrf_token']) && isset($token) || isset($_SESSION['csrf_token'])) && isset($token)) {
       echo '<input type="text" name="csrf_token" value="'.$token.'" hidden>';
     } else {
       return FALSE;
@@ -98,7 +98,7 @@ class security{
         $token=$_SESSION['csrf_token'];
       }
     }
-    //Get csrf_token from token var
+    //Get csrf_token from Request
     if($method==='POST' && isset($_POST[$csrf_var])) {
       $token_var=$_POST[$csrf_var];
     } else if($method==='GET' && isset($_GET[$csrf_var])) {
@@ -120,8 +120,12 @@ class security{
     }
   }
 
-  //XSS Clean
-  public function xss_clean($string) {
+
+  /**
+  * XSS Protection
+  * Provide XSS Protection with XSS Clean.
+  */
+  public function xss_clean(string $string) {
     //Convert all characters to HTML entities
     return htmlentities($string, ENT_QUOTES | ENT_IGNORE);
   }
