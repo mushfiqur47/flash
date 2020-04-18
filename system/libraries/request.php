@@ -45,6 +45,7 @@ class request{
   public $hostname;
   public $host;
   public $port;
+  public $server_software;
 
   //Path Information
   public $uri;
@@ -128,6 +129,8 @@ class request{
     $this->host=isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : FALSE;
     //Get port
     $this->port=isset($_SERVER['SERVER_PORT']) ? $_SERVER['SERVER_PORT'] : FALSE;
+    //Get server software
+    $this->server_software=isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : FALSE;
 
 
     /**
