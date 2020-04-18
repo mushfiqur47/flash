@@ -27,6 +27,8 @@ class request{
   //Request Header Information
   public $scheme;
   public $method;
+  public $time;
+  public $time_float;
   public $protocol;
   public $accept;
   public $language;
@@ -45,7 +47,13 @@ class request{
   public $hostname;
   public $host;
   public $port;
+  public $gateway_interface;
+  public $server_addr;
+  public $server_name;
   public $server_software;
+  public $server_protocol;
+  public $server_signature;
+  public $document_root;
 
   //Path Information
   public $uri;
@@ -90,6 +98,9 @@ class request{
     $this->scheme=(isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] === 'on' || $_SERVER['HTTPS'] === 1)) || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') || (isset($_SERVER['HTTP_FRONT_END_HTTPS']) && strtolower($_SERVER['HTTP_FRONT_END_HTTPS'])!== 'off') ? 'https' : 'http';
     //Get request method get, post, put, delete
     $this->method=strtoupper($_SERVER['REQUEST_METHOD']);
+    //Get Request time
+    $this->time=isset($_SERVER['REQUEST_TIME']) ? $_SERVER['REQUEST_TIME'] : FALSE;
+    $this->time_float=isset($_SERVER['REQUEST_TIME_FLOAT']) ? $_SERVER['REQUEST_TIME_FLOAT'] : FALSE;
     //Get server protocol
     $this->protocol=isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : FALSE;
     //Get http_accept
@@ -129,8 +140,20 @@ class request{
     $this->host=isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : FALSE;
     //Get port
     $this->port=isset($_SERVER['SERVER_PORT']) ? $_SERVER['SERVER_PORT'] : FALSE;
+    //Get server gateway interface
+    $this->gateway_interface=isset($_SERVER['GATEWAY_INTERFACE']) ? $_SERVER['GATEWAY_INTERFACE'] : FALSE;
+    //Get server addr
+    $this->server_addr=isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : FALSE;
+    //Get server name
+    $this->server_name=isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : FALSE;
     //Get server software
     $this->server_software=isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : FALSE;
+    //Get server protocol
+    $this->server_protocol=isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : FALSE;
+    //Get server signature
+    $this->server_signature=isset($_SERVER['SERVER_SIGNATURE']) ? $_SERVER['SERVER_SIGNATURE'] : FALSE;
+    //Get server document root
+    $this->document_root=isset($_SERVER['DOCUMENT_ROOT']) ? $_SERVER['DOCUMENT_ROOT'] : FALSE;
 
 
     /**
