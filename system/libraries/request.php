@@ -57,10 +57,10 @@ class request{
 
   //Path Information
   public $uri;
+  public $request_uri;
   public $url;
   public $path;
   public $path_info;
-  public $request_uri;
 
   //Request Information
   public $is_secure;
