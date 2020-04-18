@@ -150,7 +150,9 @@ class view extends Views {
   **Request Header Information**
 
   - `scheme` : Request scheme http or https.
-  - `method` : Which request method was used to access the page; e.g. 'GET', 'HEAD', 'POST', 'PUT'.
+  - `method` : Which request method was used to access the page; e.g. 'GET', 'HEAD', 'POST', 'PUT', 'DELETE'
+  - `time` : The timestamp of the start of the request.
+  - `time_float` : The timestamp of the start of the request, with microsecond precision.
   - `protocol` : Name and revision of the information protocol via which the page was requested e.g. 'HTTP/1.0'.
   - `accept` : Acceptable content types for the response. 
   - `language` : Acceptable languages for the response. Example: 'en'.
@@ -167,7 +169,13 @@ class view extends Views {
   - `hostname` : The Host name from which the user is viewing the current page.
   - `host` : The HTTP Host header sent by the client.
   - `port` : The port on the server machine being used by the web server for communication. For default setups, this will be '80'; using SSL, for instance, will change this to whatever your defined secure HTTP port is.
+  - `gateway_interface` : What revision of the CGI specification the server is using; e.g. 'CGI/1.1'.
+  - `server_addr` : The IP address of the server under which the current script is executing.
+  - `server_name` : The name of the server host under which the current script is executing. If the script is running on a virtual host, this will be the value defined for that virtual host.
   - `server_software` : Server identification string, given in the headers when responding to requests.
+  - `server_protocol` : Name and revision of the information protocol via which the page was requested; e.g. 'HTTP/1.0'
+  - `server_signature` : String containing the server version and virtual host name which are added to server-generated pages, if enabled.
+  - `document_root` : The document root directory under which the current script is executing, as defined in the server's configuration file.
 
   **Request Information**
 
@@ -196,6 +204,8 @@ class view extends Views {
   **Path Information**
 
   - `url` : absolute URL of current request.
+  - `uri` : The URI which was given in order to access this page; for instance, '/index.html'.
+  - `request_uri` : The URI which was given in order to access this page; for instance, '/index.html'.
   - `path` : path of current request.
   - `path_info` : path of current request with query string.
 
