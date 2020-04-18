@@ -14,8 +14,6 @@ Flash allows user to create web applications in easy and simplest way, in Flash 
 
   - Flash is fast and powerful web framework.
   - It's very simple and easy to learn.
-  - It is based on MVT Arhitecture.
-  - It support custom libraries and services.
   - Easy to create API and Web Services.
   - Easy to deploy on any server.
 
