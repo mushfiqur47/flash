@@ -1,7 +1,7 @@
 # Flash Framework
 
 <p align="center">
-  <img src="flash-logo.png" width="400px" alt="Flash Logo">
+  <img src="flash-logo.jpg" width="400px" alt="Flash Logo">
 </p>
 
 Flash is a high performance, open source web application framework.
