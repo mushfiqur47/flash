@@ -3,7 +3,7 @@
 ### What is flash framework
 
 <p align="center">
-  <img src="flash-logo.png" width="400px" alt="Flash Logo">
+  <img src="flash-logo.jpg" width="400px" alt="Flash Logo">
 </p>
 
 Flash is a high performance, open source web application framework.
@@ -24,7 +24,7 @@ Flash is fast and lightweight php web framework. Flash framework is very simple 
 ### Flash architecture
 
 <p align="center">
-  <img src="flash-architecture.png" width="600px" alt="Flash Framework architecture">
+  <img src="flash-architecture.jpg" width="600px" alt="Flash Framework architecture">
 </p>
 
 Flash web framework based on MVT (Model-View-Template) architecture. The MVT (Model-View-Template) is a software design pattern. The Model helps to handle database. It is a data access layer which handles the database.
