@@ -73,7 +73,7 @@ class URI{
   */
   public function media(string $path=NULL){
     global $setting;
-    $media=rtrim($this->base_url(),'/').'/'.ltrim($setting['media'],'/');
+    $media=rtrim(BASEPATH,'/').'/'.ltrim($setting['media'],'/');
     if($path){
       $path=ltrim($path,'/');
       return rtrim($media,'/').'/'.$path;
