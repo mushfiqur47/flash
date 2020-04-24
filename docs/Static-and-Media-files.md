@@ -41,12 +41,16 @@ $setting['media'] = '/application/your_media_dir';
   - Upload media files.
 
 ```php
-class app_view extends Views{
+class app_view extends Views {
   function home() {
     $source = $this->files->image['tmp_name'];
     $destination = $this->uri->media('/img');
     //upload files
-    $this->files->upload($source, $destination);
+    if($this->files->upload($source, $destination)) {
+      return $this->response("File uploaded");
+    } else {
+      return $this->response("Error: File not uploaded");
+    }
   }
 }
 ```
