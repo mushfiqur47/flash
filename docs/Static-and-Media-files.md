@@ -40,7 +40,7 @@ $setting['media'] = '/application/your_media_dir';
 ```
   - Upload media files.
 
-```html
+```php
 class app_view extends Views{
   function home() {
     $source = $this->files->image['tmp_name'];
