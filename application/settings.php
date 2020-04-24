@@ -155,15 +155,12 @@ $setting['static'] = '';
 /**
 * Media Files Directory
 *
-* Media directory is used to serve and upload your media files like image, audio, video etc.
+* Media directory is used to upload your media files like image, audio, video etc.
 * Example :
 *    $setting['media'] = '/application/media_dir_name';
-* Add media directory path to serve your media files.
+* Add media directory path to upload your media files.
 * Note : you can also serve media files directly. but if you add the media directory path then you can serve any file easily.
-* Example :
-*    1. Serve cat.jpg from images directory.
-*        <img src="<php echo "$this->media/images/cat.jpg"; ?>">
-*
+* 
 * But if you don't use the media path then you have to write full path of your media files like "/application/images/cat.jpg" that very difficult to manage.
 */
 
