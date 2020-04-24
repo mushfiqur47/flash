@@ -38,20 +38,17 @@ $setting['static'] = '/application/your_static_dir';
 ```php
 $setting['media'] = '/application/your_media_dir';
 ```
-  - Use media files in templates.
+  - Upload media files.
 
 ```html
-<!DOCTYPE>
-<html>
-<head>
-  <title>cat image</title>
-</head>
-<body>
-  <img src='<?php echo $this->media.'/img/cat.jpg'; ?>' alt='cat image'/>
-  <!-- or -->
-  <img src='<?php echo $this->uri->media('/img/cat.jpg'); ?>' alt='cat image'/>
-</body>
-</html>
+class app_view extends Views{
+  function home() {
+    $source = $this->files->image['tmp_name'];
+    $destination = $this->uri->media('/img');
+    //upload files
+    $this->files->upload($source, $destination);
+  }
+}
 ```
 
   - `$this->media` variable store your media directory path.
