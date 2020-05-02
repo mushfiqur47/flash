@@ -94,7 +94,7 @@ class view extends Views {
 //include views to route URLs
 require_once("views.php");
 
-$urlpatterns=[
+$urlpatterns = [
   '/' => 'view.hello_world',
 ];
 ```
@@ -132,7 +132,7 @@ class view extends Views {
 //include views to route URLs
 require_once("views.php");
 
-$urlpatterns=[
+$urlpatterns = [
   '/' => 'view.hello_world',
 ];
 ```
