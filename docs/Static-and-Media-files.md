@@ -44,7 +44,7 @@ $setting['media'] = '/application/your_media_dir';
 class app_view extends Views {
   function home() {
     $source = $this->files->image['tmp_name'];
-    $destination = $this->uri->media('/img');
+    $destination = $this->uri->media('/img/').$this->files->image['name'];
     //upload files
     if($this->files->upload($source, $destination)) {
       return $this->response("File uploaded");
