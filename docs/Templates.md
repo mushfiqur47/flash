@@ -51,7 +51,7 @@ class view extends Views {
 }
 ```
 
-  **Access Data in templates**
+#### How to access Data in templates
 
 ```html
 <!DOCTYPE>
