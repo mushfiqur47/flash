@@ -2,7 +2,7 @@
 
   A settings file is a application default setting and configuration file.
 
-  **Debug**
+#### Debug
 
   Set the error_reporting directive at runtime.
 
@@ -15,7 +15,7 @@ $setting['debug'] = TRUE;
 
   Set `$setting["debug"] = FALSE` to hide all error's in production.
   
-  **User Libraries Configuration**
+#### User Libraries Configuration
 
   Install user defined libraries in you web application.
 
@@ -25,7 +25,7 @@ $library = [
 ];
 ```
 
-  **User Services Configuration**
+#### User Services Configuration
 
   Install user defined Services in you web application.
 
@@ -35,7 +35,7 @@ $service = [
 ];
 ```
 
-  **System Apps and Libraries Configuration**
+#### System Apps and Libraries Configuration
 
   Install system libraries in you web application.
 
@@ -46,7 +46,7 @@ $install = [
 ];
 ```
 
-  **Database Configuration**
+#### Database Configuration
 
 ```php
 $db['db']= [
@@ -73,7 +73,7 @@ $db['db']= [
   - **char_set** : The character set used in communicating with the database.
 
 
-  **Static Files Configuration**
+#### Static Files Configuration
 
   Add your static files directory path.
 
@@ -81,7 +81,7 @@ $db['db']= [
 $setting['static'] = 'application/static';
 ```
 
-  **Media Files Configuration**
+#### Media Files Configuration
 
   Add your media files directory path.
 
@@ -89,7 +89,7 @@ $setting['static'] = 'application/static';
 $setting['media'] = 'application/media';
 ```
 
-  **Templates Configuration**
+#### Templates Configuration
 
   Add your templates directory path.
 
@@ -99,7 +99,7 @@ $template = [
 ];
 ```
 
-  **Urls Settings**
+#### Urls Settings
 
   Set main URLs file path
 
@@ -118,7 +118,7 @@ $setting['ingore_slash'] = FALSE;
   Set `$setting['ignore_slash'] = FALSE` if you don't want to ignore trailing slashes.
 
 
-  **Set Default timezone**
+#### Set Default timezone
 
   Set your default timezone.
 
