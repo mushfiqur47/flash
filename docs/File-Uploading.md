@@ -13,7 +13,7 @@
   - `$this->files->file_var['error']` : store the error code associated with this file upload.
 
 ### Example
-  
+
   - Set your media files directory in settings file.
 
 ```php
@@ -22,15 +22,23 @@ $setting['media'] = '/application/your_media_dir';
 
   media files directory store all uploaded files on the server.
 
+  - Create HTML form
+
+```html
+<form action="/upload" method="post" enctype="multipart/form-data">
+  <input type="file" name="image">
+  <input type="submit" value="Upload Image" name="submit">
+</form>
+```
   - Upload files.
 
 ```php
 class app_view extends Views {
   function file_upload() {
-    //source path of uploaded files.
+    //source path.
     $source = $this->files->image['tmp_name'];
 
-    //destination path of uploaded files.
+    //destination path.
     $destination = $this->uri->media('/img/').$this->files->image['name'];
 
     //upload files
