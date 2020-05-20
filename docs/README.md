@@ -43,6 +43,7 @@ Flash allows user to create web applications in easy and simplest way, in Flash 
   - [Use Database](Models.md#Use-Database)
 - [Templates](Templates.md)
 - [Static and Media files](Static-and-Media-files.md)
+- [File Uploading](File-Uploading.md)
 - [Session](Session.md)
 - [Cookie](Cookie.md)
 - [Request Data](Request-Data.md)
