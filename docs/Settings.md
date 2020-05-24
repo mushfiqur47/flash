@@ -78,7 +78,13 @@ $db['db']= [
   Add your static files directory path.
 
 ```php
-$setting['static'] = 'application/static';
+$setting['static_dir'] = 'application/static';
+```
+
+  Add your static URL to serve static files.
+
+```php
+$setting['static_url'] = '/static';
 ```
 
 #### Media Files Configuration
