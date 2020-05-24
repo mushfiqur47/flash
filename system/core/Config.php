@@ -132,7 +132,14 @@ class Config{
     $this->errorhandler=$this->parse_error($errorhandler,$this->request_path);
 
     //Get urlpatterns data.
-    $this->urlpatterns=$this->urlparser($urlpatterns,$this->request_path);
+    $urls=$this->urlparser($urlpatterns, $this->request_path);
+    if(isset($setting['static_dir'])) {
+      $static_urls=$this->static_url_parser($setting['static_dir']);
+    } else {
+      $static_urls=array();
+    }
+    $this->urlpatterns=array_unique(array_merge($urls, $static_urls), SORT_REGULAR);
+
   }
 
   /**
@@ -239,6 +246,135 @@ class Config{
       exit("'service' : invalid array");
     }
   }
+
+
+  /**
+  * ScanDir
+  * Scan static directory and get static files data.
+  */
+  function scan_dir(string $dir_path, &$directory_data=array()) {
+    //Path
+    $dir_path = strlen($dir_path) == 1 ? $dir_path : rtrim($dir_path, DIRECTORY_SEPARATOR);
+    //Directory all data
+    if(!is_array($directory_data)) {
+      $directory_data = array();
+    }
+
+    //Check dir read permission
+    if(is_readable($dir_path)) {
+      foreach(array_diff(scandir($dir_path), array('.','..')) as $data) {
+        if(is_dir($dir_path.DIRECTORY_SEPARATOR.$data)) {
+          $this->scan_dir($dir_path.DIRECTORY_SEPARATOR.$data, $directory_data);
+        } else {
+          $directory_data[] = array(
+            'name' => $data,
+            'path' => $dir_path.DIRECTORY_SEPARATOR.$data,
+          );
+        }
+      }
+      return $directory_data;
+    } else {
+      return false;
+    }
+  }
+
+
+  /**
+  * Get Mime Type
+  * get files mime type.
+  */
+  function get_mime_type(string $file) {
+    //mime types
+    $mime_types = array(
+      'txt' => 'text/plain',
+      'htm' => 'text/html',
+      'html' => 'text/html',
+      'php' => 'text/html',
+      'css' => 'text/css',
+      'js' => 'application/javascript',
+      'json' => 'application/json',
+      'xml' => 'application/xml',
+      'swf' => 'application/x-shockwave-flash',
+      'flv' => 'video/x-flv',
+
+       //images
+      'png' => 'image/png',
+      'jpe' => 'image/jpeg',
+      'jpeg' => 'image/jpeg',
+      'jpg' => 'image/jpeg',
+      'gif' => 'image/gif',
+      'bmp' => 'image/bmp',
+      'ico' => 'image/vnd.microsoft.icon',
+      'tiff' => 'image/tiff',
+      'tif' => 'image/tiff',
+      'svg' => 'image/svg+xml',
+      'svgz' => 'image/svg+xml',
+
+      //archives
+      'zip' => 'application/zip',
+      'rar' => 'application/x-rar-compressed',
+      'exe' => 'application/x-msdownload',
+      'msi' => 'application/x-msdownload',
+      'cab' => 'application/vnd.ms-cab-compressed',
+
+      //audio/video
+      'mp3' => 'audio/mpeg',
+      'qt' => 'video/quicktime',
+      'mov' => 'video/quicktime',
+
+      //adobe
+      'pdf' => 'application/pdf',
+      'psd' => 'image/vnd.adobe.photoshop',
+      'ai' => 'application/postscript',
+      'eps' => 'application/postscript',
+      'ps' => 'application/postscript',
+
+      //ms office
+      'doc' => 'application/msword',
+      'rtf' => 'application/rtf',
+      'xls' => 'application/vnd.ms-excel',
+      'ppt' => 'application/vnd.ms-powerpoint',
+      'docx' => 'application/msword',
+      'xlsx' => 'application/vnd.ms-excel',
+      'pptx' => 'application/vnd.ms-powerpoint',
+
+      //open office
+      'odt' => 'application/vnd.oasis.opendocument.text',
+      'ods' => 'application/vnd.oasis.opendocument.spreadsheet',
+    );
+
+    $extension = strtolower(end(explode('.', $file)));
+    if(isset($mime_types[$extension])) {
+     return $mime_types[$extension];
+    } else {
+     return mime_content_type($file);
+    }
+  }
+
+
+  /**
+  * Parse Static URL
+  * This function configure and parse application static files URLs.
+  */
+  function static_url_parser(string $static_dir) : array {
+    $static_dir = BASEPATH.'/'.trim($static_dir, '/');
+    $static_urls = array();
+    //check static dir exists or not
+    if(is_dir($static_dir)) {
+      foreach($this->scan_dir($static_dir) as $data) {
+        if(isset($this->setting['static_url'])) {
+          $static_url = rtrim($this->setting['static_url'], '/').'/'.ltrim(str_replace($static_dir, '' ,$data['path']), '/');
+        } else {
+          $static_url = str_replace($static_dir, '' ,$data['path']);
+        }
+        $static_urls[$static_url]['url'] = $static_url;
+        $static_urls[$static_url]['file_path'] = $data['path'];
+        $static_urls[$static_url]['mime_type'] = $this->get_mime_type($data['path']);
+      }
+    }
+    return $static_urls;
+  }
+
 
   /**
   * Parse urlpatterns

@@ -178,7 +178,14 @@ class Router{
     }
     //Match routes and render views
     if(array_key_exists($request_path, $routes)) {
-      $this->load_view($routes[$request_path]['views'], $routes[$request_path]['data']);
+      //Serve static files
+      if(array_key_exists('file_path', $routes[$request_path])) {
+        header('Content-type: '.$routes[$request_path]['mime_type']);
+        readfile($routes[$request_path]['file_path']);
+      } else {
+        //render views
+        $this->load_view($routes[$request_path]['views'], $routes[$request_path]['data']);
+      }
     } else {
       //Page not found
       $this->server_error(404);
