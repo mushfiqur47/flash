@@ -272,7 +272,7 @@ $.ajax({
   type: "POST",
   url: "/login",
   data: {
-    carf_token: "<?php echo $this->security->get_csrf_token(); ?>",
+    csrf_token: "<?php echo $this->security->get_csrf_token(); ?>",
     username: "user_name",
     password: "password"
   },
