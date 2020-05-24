@@ -77,8 +77,7 @@ class user_agent{
       '/windows|win32/i' => 'Windows',
       '/iphone|ipod|ipad|iOS/i' => 'iOS',
       '/macintosh|mac os x|mac_powerpc/i' => 'Mac OS',
-      '/blackberry/i' => 'BlackBerry',
-      '/BB/i' => 'BlackBerry',
+      '/blackberry|BB/i' => 'BlackBerry',
       '/webos/i' => 'Mobile',
       '/ubuntu/i' => 'Ubuntu',
       '/linux/i' => 'Linux',
@@ -115,10 +114,10 @@ class user_agent{
         '/android 4.4.4/i' => '4.4.4 KitKat',
         '/android 4.4.2/i' => '4.4.2 KitKat',
         '/android 4.4/i' => '4.4 KitKat',
-        '/android 4.0.4/i' => '4.0.4 IceCream Sandwich',
         '/android 4.3/i' => '4.3 Jelly Bean',
         '/android 4.2.2/i' => '4.2.2 Jelly Bean',
         '/android 4.2/i' => '4.2 Jelly Bean',
+        '/android 4.0.4/i' => '4.0.4 IceCream Sandwich',
         '/android 4.0/i' => '4.0 IceCream Sandwich',
         '/android 4.1/i' => '4.1 Jelly Bean',
         '/android 2.3.7/i' => '2.3.7 Gingerbread',
@@ -180,7 +179,6 @@ class user_agent{
         '/OS 7_0/i' => 'iOS 7',
         '/OS 7/i' => 'iOS 7',
         '/OS 6_1_6/i' => 'iOS 6.1.6',
-        '/OS_6/i' => 'iOS 6',
         '/OS 6_0/i' => 'iOS 6',
         '/OS 6/i' => 'iOS 6',
         '/OS 5_1_1/i' => 'iOS 5.1.1',
@@ -295,7 +293,8 @@ class user_agent{
       } else {
         $version = $matches['version'][1];
       }
-    }else {
+    }
+else {
       $version = $matches['version'][0];
     }
 
@@ -312,8 +311,7 @@ class user_agent{
       '/iphone/i' => 'iPhone',
       '/ipod/i' => 'iPod',
       '/ipad/i' => 'iPad',
-      '/blackberry/i' => 'Phone',
-      '/BB/i' => 'Phone',
+      '/blackberry|BB/i' => 'Phone',
       '/webos/i' => 'Mobile',
       '/tablet/i' => 'Tablet',
       '/android/i' => 'Phone',
@@ -331,18 +329,16 @@ class user_agent{
   //parse device brand from user_agent
   function get_device_brand() {
     $data = array(
-      '/iPhone/i' => 'Apple',
-      '/iPad/i' => 'Apple',
-      '/SAMSUNG/i' => 'Samsung',
-      '/SM-/i' => 'Samsung',
+      '/iPhone|iPad|iPod/i' => 'Apple',
+      '/SAMSUNG|SM-/i' => 'Samsung',
       '/Sony/i' => 'Sony',
       '/LG/i' => 'LG',
-      '/Xiaomi/i' => 'Xiaomi',
-      '/Redmi/i' => 'Xiaomi',
-      '/Lenovo/i' => 'Lenovo',
-      '/karbonn/i' => 'Karbonn',
+      '/Xiaomi|Redmi/i' => 'Xiaomi',
+      '/realme/i' => 'Realme',
       '/oppo/i' => 'Oppo',
       '/vivo/i' => 'Vivo',
+      '/Lenovo/i' => 'Lenovo',
+      '/karbonn/i' => 'Karbonn',
       '/Panasonic/i' => 'Panasonic',
       '/OnePlus/i' => 'OnePlus',
       '/Nokia/i' => 'Nokia',
