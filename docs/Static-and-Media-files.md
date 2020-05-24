@@ -7,7 +7,13 @@
   - Set your static files directory in settings file.
 
 ```php
-$setting['static'] = '/application/your_static_dir';
+$setting['static_dir'] = '/application/static';
+```
+
+  - Set your static URL in settings file.
+
+```php
+$setting['static_url'] = '/static';
 ```
 
   - Use static files in templates.
