@@ -147,10 +147,10 @@ $db['db'] = [
 */
 
 //Static URL
-$setting['static_url'] = '/static';
+$setting['static_url'] = '';
 
 //Static files DIR
-$setting['static_dir'] = '/application/static';
+$setting['static_dir'] = '';
 
 
 /**
