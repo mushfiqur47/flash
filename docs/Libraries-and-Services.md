@@ -115,8 +115,9 @@ class view extends Views {
 
   There are several libraries available in Flash framework.
 
-  - [Request Library](#Request)
-  - [Security Library](#Security)
+  - [Request Library](Libraries/Request.md)
+  - [Security Library](Libraries/Security.md)
+  - [User Agent Library](Libraries/User-Agent.md)
 
   **Install system library**
 
@@ -125,6 +126,8 @@ class view extends Views {
 $install = [
   'system.request',
   'system.security',
+  //Add alias name
+  'system.user_agent' => 'user',
 ];
 ```
 
@@ -136,173 +139,9 @@ class view extends Views {
     //check request method
     if($this->request->is_post) {
       //POST Request
+      echo $this->user->ip;
     }
     return $this->render('home');
   }
 }
 ```
-
-
-## Request
-
-  Resquest library handle all the HTTP Request and Server information.
-
-  **Request Header Information**
-
-  - `scheme` : Request scheme http or https.
-  - `method` : Which request method was used to access the page; e.g. 'GET', 'HEAD', 'POST', 'PUT', 'DELETE'
-  - `time` : The timestamp of the start of the request.
-  - `time_float` : The timestamp of the start of the request, with microsecond precision.
-  - `protocol` : Name and revision of the information protocol via which the page was requested e.g. 'HTTP/1.0'.
-  - `accept` : Acceptable content types for the response. 
-  - `language` : Acceptable languages for the response. Example: 'en'.
-  - `encoding` : Acceptable encodings for the response. Example: 'gzip'.
-  - `connection` : header from the current request, if there is one. Example: 'Keep-Alive'.
-  - `content_type` : A string representing the MIME type of the request, parsed from the CONTENT_TYPE header.
-  - `content_length` : The length of the request body (as a string).
-  - `user_agent` : This is a string denoting the user agent being which is accessing the page. A typical example is: Mozilla/4.5 [en] (X11; U; Linux 2.2.9 i586).
-  - `referer` : The address of the page (if any) which referred the user agent to the current page. This is set by the user agent. Not all user agents will set this, and some provide the ability to modify HTTP_REFERER as a feature. In short, it cannot really be trusted.
-  - `headers` : Fetch all HTTP request headers.
-
-  **Server Information**
-
-  - `hostname` : The Host name from which the user is viewing the current page.
-  - `host` : The HTTP Host header sent by the client.
-  - `port` : The port on the server machine being used by the web server for communication. For default setups, this will be '80'; using SSL, for instance, will change this to whatever your defined secure HTTP port is.
-  - `gateway_interface` : What revision of the CGI specification the server is using; e.g. 'CGI/1.1'.
-  - `server_addr` : The IP address of the server under which the current script is executing.
-  - `server_name` : The name of the server host under which the current script is executing. If the script is running on a virtual host, this will be the value defined for that virtual host.
-  - `server_software` : Server identification string, given in the headers when responding to requests.
-  - `server_protocol` : Name and revision of the information protocol via which the page was requested; e.g. 'HTTP/1.0'
-  - `server_signature` : String containing the server version and virtual host name which are added to server-generated pages, if enabled.
-  - `document_root` : The document root directory under which the current script is executing, as defined in the server's configuration file.
-
-**Path Information**
-
-  - `uri` : The URI which was given in order to access this page; for instance, '/index.html'.
-  - `request_uri` : The URI which was given in order to access this page; for instance, '/index.html'.
-  - `url` : absolute URL of current request.
-  - `path` : path of current request.
-  - `path_info` : path of current request with query string.
-
-  **Request Information**
-
-  - `is_secure` : TRUE if the current request is https.
-  - `is_ajax` : TRUE if the current request is made by ajax.
-  - `is_get` : TRUE if the current request is GET.
-  - `is_post` : TRUE if the current request is POST.
-  - `is_put` : TRUE if the current request is PUT.
-  - `is_delete` : TRUE if the current request is DELETE.
-  - `is_patch` : TRUE if the current request is PATCH.
-  - `is_head` : TRUE if the current request is HEAD.
-  - `is_options` : TRUE if the current request is OPTIONS.
-  - `is_connect` : TRUE if the current request is CONNECT.
-  - `is_trace` : TRUE if the current request is TRACE.
-  - `is_copy` : TRUE if the current request is COPY.
-  - `is_link` : TRUE if the current request is LINK.
-  - `is_unlink` : TRUE if the current request is UNLINK.
-  - `is_lock` : TRUE if the current request is LOCK.
-  - `is_unlock` : TRUE if the current request is UNLOCK.
-  - `is_purge` : TRUE if the current request is PURGE.
-  - `is_propfind` : TRUE if the current request is PROPFIND.
-  - `is_view` : TRUE if the current request is VIEW.
-  - `is_http` : TRUE if the current request is http.
-  - `is_https` : TRUE if the current request is https.
-
-  **User Information**
-
-  - `remote_addr` : The IP address from which the user is viewing the current page.
-  - `is_redirected` : True if user is redirected from somewhere.
-
-
-
-## Security
-
-  Security library provide basic security feature to the web application. flash framework provide CSRF, XSS and SQL Injection protection.
-
-#### SQL Injection
-
-  SQL Injection is a technique where an attacker creates or alters existing SQL commands to expose hidden data, or to override valuable ones, or even to execute dangerous system level commands on the database host. 
-
-  **Avoid SQL Injection**
-
-  - Use prepared statements.
-  - Use database-specific string escape function (e.g. `mysql_real_escape_string()`, `sqlite_escape_string()`, etc.).
-
-#### XSS
-
-  Cross site scripting (XSS) is a common attack vector that injects malicious code into a vulnerable web application.
-  Flash Framework provide XSS protection.
-
-```php
-class view extends Views {
-  function blog() {
-    //XSS Clean
-    $data = $this->security->xss_clean($blog_data);
-    return $this->response($data);
-  }
-}
-```
-  Use `$this->security->xss_clean()` to avoid xss attack.
-
-
-#### CSRF
-
-  Cross site request forgery (CSRF), also known as XSRF, Sea Surf or Session Riding attack. CSRF is a type of malicious exploit of a website where unauthorized commands are transmitted from a user that the web application trusts.
-
-  **Add CSRF Token :**
-
-  Add CSRF Token in your web form to avoid CSRF attack.
-
-```html
-<form method="POST">
-  <?php $this->security->csrf_token(); ?>
-  <input type="text" name="username" palceholder="Username">
-  <input type="password" name="password" placeholder="Password">
-  <input type="submit" name="submit" value="Login">
-</form>
-```
-
-  **Add CSRF token in AJAX**
-
-  Add CSRF token in Ajax request.
-
-```javascript
-$.ajax({
-  type: "POST",
-  url: "/login",
-  data: {
-    csrf_token: "<?php echo $this->security->get_csrf_token(); ?>",
-    username: "user_name",
-    password: "password"
-  },
-  success: function(data){
-     //success response data
-  }
-});
-```
-
-  **Verify CSRF Token**
-
-```php
-class view extends Views {
-  function login() {
-    //Form Submit
-    if($this->request->is_post) {
-      //Verify CSRF Token
-      if($this->security->csrf_verify()) {
-        //Valid CSRF Token
-        $username = $this->post->username;
-        $password = $this->post->password;
-      } else {
-        //Invalid CSRF Token
-      }
-    } else {
-      //Render Login Page
-      return $this->render('login');
-    }
-  }
-}
-```
-
-  Add CSRF token in your web form and verify that token, to authenticate the web form and avoid CSRF attack.
