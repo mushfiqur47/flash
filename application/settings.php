@@ -135,33 +135,31 @@ $db['db'] = [
 
 
 /**
-* Static Files Directory
+* Static Files
 *
 * Static directory is used to serve your static files like CSS, Javascript etc.
 * Example :
-*    $setting['static'] = '/application/static_dir_name';
-* Add static directory path to serve your static files.
-* Note : you can also serve static files directly. but if you add the static directory path then you can serve any file easily.
-* Example :
-*    1. Serve login.css from login directory.
-*        <link href="<php echo "$this->static/login/login.css"; ?>" rel="stylesheet">
+*    $setting['static_dir'] = '/application/static_dir_name';
 *
-* But if you don't use the static path then you have to write full path of your static files like "/application/css/login/login.css" that very difficult to manage.
+* Add static URL to serve your static files.
+* Example :
+*    $setting['static_url'] = '/static';
 */
 
-$setting['static'] = '';
+//Static URL
+$setting['static_url'] = '/static';
+
+//Static files DIR
+$setting['static_dir'] = '/application/static';
 
 
 /**
-* Media Files Directory
+* Media Files
 *
 * Media directory is used to upload your media files like image, audio, video etc.
 * Example :
 *    $setting['media'] = '/application/media_dir_name';
 * Add media directory path to upload your media files.
-* Note : you can also serve media files directly. but if you add the media directory path then you can serve any file easily.
-* 
-* But if you don't use the media path then you have to write full path of your media files like "/application/images/cat.jpg" that very difficult to manage.
 */
 
 $setting['media'] = '';
