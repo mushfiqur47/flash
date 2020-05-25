@@ -283,4 +283,27 @@ class Views{
       exit("'$template' : template does not exists");
     }
   }
+  
+  /**
+  * Render File
+  * Render files with HTTP Response status code.
+  */
+  protected function render_file(string $file_path=NULL, int $http_response_code=NULL, string $mime_type=NULL) {
+    //Render files.
+    if(file_exists($file_path)) {
+      //Set header content type.
+      if($mime_type) {
+        header('Content-type: '.$mime_type);
+      } else {
+        header('Content-type: '.mime_content_type($file_path));
+      }
+      if($http_response_code) {
+        //HTTP Response code
+        http_response_code($http_response_code);
+      }
+      readfile($file_path);
+    } else {
+      exit("'$file_path' : file does not exists");
+    }
+  }
 }
