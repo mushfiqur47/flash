@@ -17,3 +17,15 @@
 ```
 
   That's it, in the Flash web framework there is nothing to configure and setup. it's always ready to go.
+
+### For Linux
+
+  A quick setup for linux and android devices.
+
+```sh
+$ git clone https://github.com/rajkumardusad/flash
+$ cd flash
+$ php -S localhost:8080 index.php
+```
+
+  That's it, in the Flash web framework there is nothing to configure and setup. it's always ready to go.
