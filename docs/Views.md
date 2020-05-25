@@ -45,6 +45,22 @@ class view extends Views {
 ```
 
 
+### Send Files
+
+  Send files to the client like (CSS, JS, Images, audio, video etc.).
+
+```php
+class view extends Views {
+  function hello_world() {
+    //Send Files.
+    return $this->send_file("cat.jpg");
+  }
+}
+```
+
+  `send_file()` send downloadable files to the client browser.
+
+
 ### Response data
 
   **Response simple string data :**
