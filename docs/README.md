@@ -28,6 +28,7 @@ Flash allows user to create web applications in easy and simplest way, in Flash 
 - [Views](Views.md)
   - [Create Views](Views.md#Create-a-view)
   - [Render templates](Views.md#Render-templates)
+  - [Render Files](Views.md#Render-Files)
   - [Response data](Views.md#Response-data)
   - [Json Response](Views.md#Json-Response)
   - [Set Http Response code](Views.md#Set-Http-Response-code)
