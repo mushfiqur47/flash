@@ -31,6 +31,20 @@ class view extends Views {
 }
 ```
 
+### Render Files
+
+  Render files like (CSS, JS, Images, etc.).
+
+```php
+class view extends Views {
+  function hello_world() {
+    //Render Files.
+    return $this->render_file("cat.jpg");
+  }
+}
+```
+
+
 ### Response data
 
   **Response simple string data :**
