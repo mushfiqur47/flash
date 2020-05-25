@@ -290,7 +290,7 @@ class Views{
   */
   protected function render_file(string $file_path=NULL, int $http_response_code=NULL, string $mime_type=NULL) {
     //Render files.
-    if(file_exists($file_path)) {
+    if(is_file($file_path)) {
       //Set header content type.
       if($mime_type) {
         header('Content-type: '.$mime_type);
@@ -301,7 +301,49 @@ class Views{
         //HTTP Response code
         http_response_code($http_response_code);
       }
-      readfile($file_path);
+      return readfile($file_path);
+    } else {
+      exit("'$file_path' : file does not exists");
+    }
+  }
+
+  /**
+  * Get File Size
+  * get file size of any file. it support larger then 4 GB file size.
+  */
+  private function get_filesize(string $file_path) {
+    $size = filesize($file_path);
+    if ($size < 0) {
+      if (!(strtoupper(substr(PHP_OS, 0, 3))=='WIN')) {
+        $size = trim(`stat -c%s $file_path`);
+      } else {
+        $fsobj=new COM("Scripting.FileSystemObject");
+        $f = $fsobj->GetFile($file_path);
+        $size = $f->Size;
+      }
+    }
+    return $size;
+  }
+
+  /**
+  * Send File
+  * Send files to the client.
+  */
+  protected function send_file(string $file_path, int $http_response_code=NULL) {
+    if(is_file($file_path)) {
+      if($http_response_code) {
+        //HTTP Response code
+        http_response_code($http_response_code);
+      }
+      header('Content-Description: File Transfer');
+      header('Content-Type: application/octet-stream');
+      header('Content-Disposition: attachment; filename="'.basename($file_path).'"');
+      header('Expires: 0');
+      header('Cache-Control: must-revalidate');
+      header('Pragma: public');
+      header('Content-Length: '.$this->get_filesize($file_path));
+      flush(); //Flush system output buffer
+      return readfile($file_path);
     } else {
       exit("'$file_path' : file does not exists");
     }
