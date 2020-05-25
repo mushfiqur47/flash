@@ -16,9 +16,12 @@ Flash allows user to create web applications in easy and simplest way, in Flash 
 
 Flash is fast and lightweight php web framework. Flash framework is very simple and easy to learn. even if you are new in web development don't worry you will love this framework.
 
-  - Flash is fast and powerful web framework.
-  - It's very simple and easy to learn.
-  - Easy to create API and Web Services.
+  - Fast and powerful web framework.
+  - Extremely Light Weight.
+  - MVT Architecture.
+  - You can build RESTful APIs faster.
+  - Security and XSS Filtering.
+  - Simple and easy to learn.
   - Easy to deploy on any server.
 
 ### Flash architecture
@@ -50,14 +53,14 @@ The Template is a presentation layer which handles User Interface part. The View
 /index.php
 ```
 
-#### system directory
+#### System directory
   system directory is main system directory of flash framework, where all the system files are stored.
 
-#### application directory
+#### Application directory
   application is main project directory that contains all your apps and project files. you can change this default application directory to different location, set the new APP_DIR path in index.php to change the default application directory. all your app project files (settings, urls) shold be inside the application directory.
 
-#### app directory
+#### App directory
   app is demo application of your project. your can create new apps like login, admin, news, blogs or any app that you want. your app directory contains views, models and urls files.
 
-#### templates directory
+#### Templates directory
   templates directory contains all your HTML template files.
