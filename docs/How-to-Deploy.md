@@ -13,4 +13,4 @@
       index.php
 ```
 
-  Now you Flash web application is ready to go.
+  Now yor Flash web application is ready to go.
