@@ -148,4 +148,4 @@ $urlpatterns = [
 
 ## License
 
-  [MIT License](../LICENSE)
+  [MIT License](https://github.com/rajkumardusad/flash/blob/master/LICENSE)
