@@ -26,11 +26,6 @@ $setting['debug'] = TRUE;
 *        '/application/library/user_authentication' => 'user',
 *    ];
 *
-* We can add an alias name of library.
-* for example if we want to access a login service so just write '$this->login->is_valid'.
-* but if we want to access user_authentication library so we have to write '$this->user_authentication->is_authenticated' that to difficult.
-* if we will use an alias name for libraries "application/library/user_authentication" => "user", now we can access this in very simple way like '$this->user->is_authenticated' that easy.
-*
 * Add your library path in 'library' array to install and use libraries in your application.
 * you can also install or load your libraries manually.
 * Note : Any library and service can not be used in models.
@@ -63,17 +58,12 @@ $service = [];
 * Install system application & libraries to use in your app.
 * Example :
 *    $install = [
-*        'system.Request',
-*        'system.user_authentication' => 'user'
+*        'system.request',
+*        'system.user_agent' => 'user'
 *    ];
 *
-* We can add an alias name of library.
-* for example if we want to access a Request library so just write '$this->Request->method'.
-* but if we want to access user_authentication library so we have to write '$this->user_authentication->is_authenticated' that to difficult.
-* if we will use an alias name for libraries "system.user_authentication" => "user", now we can access this in very simple way like '$this->user->is_authenticated' that easy.
-*
 * Add any system libraries and apps in 'install' array to install and use system libraries in your application.
-* Note : Any library and application can not be used in models.
+* Note : Any library and service can not be used in models.
 */
 
 $install = [
@@ -137,13 +127,14 @@ $db['db'] = [
 /**
 * Static Files
 *
+* Add static URL to serve your static files.
+* Example :
+*    $setting['static_url'] = '/static';
+*
 * Static directory is used to serve your static files like CSS, Javascript etc.
 * Example :
 *    $setting['static_dir'] = '/application/static_dir_name';
 *
-* Add static URL to serve your static files.
-* Example :
-*    $setting['static_url'] = '/static';
 */
 
 //Static URL
