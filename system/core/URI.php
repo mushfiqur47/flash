@@ -58,7 +58,7 @@ class URI{
   */
   public function static(string $path=NULL){
     global $setting;
-    $static=$setting['static_url'];
+    $static=rtrim($this->base_url(),'/').'/'.ltrim($setting['static_url'],'/');
     if($path){
       $path=ltrim($path,'/');
       return rtrim($static,'/').'/'.$path;
