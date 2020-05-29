@@ -24,8 +24,6 @@ defined('BASEPATH') OR exit('No direct access allowed');
 */
 
 class Models{
-  //Database connection settings
-  private $db_setting;
 
   /**
   * Connect
@@ -36,23 +34,23 @@ class Models{
 
     //Check db array
     if(is_array($db)) {
-      $db_setting = $db;
+      $db_setting=$db;
     } else {
       exit("Invalid database setting array");
     }
 
     //Get dbname
     if(is_array($dbname)) {
-      $db_name = $dbname;
+      $db_name=$dbname;
     } else {
-      $db_name = array($dbname);
+      $db_name=array($dbname);
     }
 
     //Parse database settings
-    $this->db_setting = $this->parse_db($db_setting, $db_name);
+    $this->db_setting=$this->parse_db($db_setting, $db_name);
 
     //Initialize database connection
-    $this->load_driver($this->db_setting, $db_name);
+    $this->load_driver($db_setting, $db_name);
   }
 
   /**
