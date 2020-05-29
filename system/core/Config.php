@@ -134,7 +134,7 @@ class Config{
     //Get urlpatterns data.
     $urls=$this->urlparser($urlpatterns, $this->request_path);
     if(isset($setting['static_dir'])) {
-      $static_urls=$this->static_url_parser($setting['static_dir']);
+      $static_urls=$this->static_url_parser($setting['static_dir'], $this->request_path);
     } else {
       $static_urls=array();
     }
@@ -249,37 +249,6 @@ class Config{
 
 
   /**
-  * ScanDir
-  * Scan static directory and get static files data.
-  */
-  function scan_dir(string $dir_path, &$directory_data=array()) {
-    //Path
-    $dir_path = strlen($dir_path) == 1 ? $dir_path : rtrim($dir_path, DIRECTORY_SEPARATOR);
-    //Directory all data
-    if(!is_array($directory_data)) {
-      $directory_data = array();
-    }
-
-    //Check dir read permission
-    if(is_readable($dir_path)) {
-      foreach(array_diff(scandir($dir_path), array('.','..')) as $data) {
-        if(is_dir($dir_path.DIRECTORY_SEPARATOR.$data)) {
-          $this->scan_dir($dir_path.DIRECTORY_SEPARATOR.$data, $directory_data);
-        } else {
-          $directory_data[] = array(
-            'name' => $data,
-            'path' => $dir_path.DIRECTORY_SEPARATOR.$data,
-          );
-        }
-      }
-      return $directory_data;
-    } else {
-      return false;
-    }
-  }
-
-
-  /**
   * Get Mime Type
   * get files mime type.
   */
@@ -356,20 +325,38 @@ class Config{
   * Parse Static URL
   * This function configure and parse application static files URLs.
   */
-  function static_url_parser(string $static_dir) : array {
+  function static_url_parser(string $static_dir, string $request_path) : array {
+    //Static dir path
     $static_dir = BASEPATH.'/'.trim($static_dir, '/');
+    //Static URLs array
     $static_urls = array();
     //check static dir exists or not
     if(is_dir($static_dir)) {
-      foreach($this->scan_dir($static_dir) as $data) {
-        if(isset($this->setting['static_url'])) {
-          $static_url = rtrim($this->setting['static_url'], '/').'/'.ltrim(str_replace($static_dir, '' ,$data['path']), '/');
+      if(isset($this->setting['static_url'])) {
+        $static_url = rtrim($this->setting['static_url'], '/').'/(.*)';
+
+       //Convert wildcard patterns to RegEx
+       $regex=str_replace(array('{slug}'), array('([^/]+)'), $static_url);
+
+        //URLs route
+        $route=$regex;
+
+        //Match RegEx patterns
+        if(preg_match('#^'.$regex.'$#', $request_path, $matches)) {
+          $route = $matches[0];
+          //Remove first data from array
+          array_shift($matches);
+          //Add pathVariables Data
+          $file_path=$static_dir.'/'.trim($matches[0], '/');
         } else {
-          $static_url = str_replace($static_dir, '' ,$data['path']);
+          //Null pathVariables
+          $file_path=null;
         }
-        $static_urls[$static_url]['url'] = $static_url;
-        $static_urls[$static_url]['file_path'] = $data['path'];
-        $static_urls[$static_url]['mime_type'] = $this->get_mime_type($data['path']);
+        if(is_file($file_path)) {
+          $static_urls[$route]['url'] = $route;
+          $static_urls[$route]['file_path'] = $file_path;
+          $static_urls[$route]['mime_type'] = $this->get_mime_type($file_path);
+        }
       }
     }
     return $static_urls;
@@ -380,7 +367,7 @@ class Config{
   * Parse urlpatterns
   * This function configure and parse application urlpatterns array.
   */
-  protected function urlparser(array $urlpatterns,string $request_path) : array {
+  protected function urlparser(array $urlpatterns, string $request_path) : array {
 
     //urlpatterns array
     $urls=array();
@@ -496,7 +483,7 @@ class Config{
   * Parse ErrorHandler
   * This function configure and parse users custom errorhandler array.
   */
-  protected function parse_error(array $errorhandler,string $request_path) : array {
+  protected function parse_error(array $errorhandler, string $request_path) : array {
     //ErrorHandler array
     $errors=array();
     //Parse errorhandler array
