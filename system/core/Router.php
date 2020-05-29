@@ -75,7 +75,7 @@ class Router{
     }
 
     //Get urlpatterns data.
-    $urls = $this->urlparser($urlpatterns, $this->request_path);
+    $urls=$this->urlparser($urlpatterns, $this->request_path);
     if(isset($setting['static_dir'])) {
       $static_urls=$this->static_url_parser($setting['static_dir'], $this->request_path);
     } else {
@@ -89,6 +89,7 @@ class Router{
 
     //Check for server error
     $this->server_error();
+
     //Route URLs
     $this->router($this->request_path, $this->routes);
   }
@@ -337,7 +338,7 @@ class Router{
         //Get views class name and method name
         list($class,$view)=explode('.',$handler);
         $errors[$error]['error']=$error;
-        $errors[$error]['views']=array('class'=>$class,'method'=>$view);
+        $errors[$error]['views']=array('class'=>$class, 'method'=>$view);
         $errors[$error]['request']=$request_path;
       } else {
         exit("invalid errorhandler");
@@ -383,7 +384,7 @@ class Router{
       exit();
     } else {
       //Default status codes
-      $status_codes = array(
+      $status_codes=array(
         100 => 'Continue',
         101 => 'Switching Protocols',
 
@@ -464,7 +465,7 @@ class Router{
   */
   private function router(string $request_path, array $routes) {
     //Ignore trailing slashes
-    if($this->config->setting['ingore_slash']===TRUE){
+    if($this->setting['ingore_slash']===TRUE){
       $request_path=rtrim($request_path,'/');
     }
     //Match routes and render views
