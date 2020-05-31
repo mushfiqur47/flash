@@ -11,9 +11,13 @@ class blog extends Models {
   private $title;
   private $author;
   private $date;
-  function get_data() {
+
+  function __construct() {
     //create database connection
     $this->connect('db');
+  }
+
+  function get_data() {
 
     $result = $this->db->query('select * from blog');
 
