@@ -9,6 +9,10 @@
 
 ```php
 class view extends Views {
+  function __construct() {
+    parent::__construct();
+  }
+
   function hello_world() {
     return $this->response("hello, world !!");
   }
@@ -24,6 +28,10 @@ class view extends Views {
 
 ```php
 class view extends Views {
+  function __construct() {
+    parent::__construct();
+  }
+
   function hello_world() {
     //Render HTML Templats
     return $this->render("hello");
@@ -37,6 +45,10 @@ class view extends Views {
 
 ```php
 class view extends Views {
+  function __construct() {
+    parent::__construct();
+  }
+
   function hello_world() {
     //Render Files.
     return $this->render_file("cat.jpg");
@@ -51,6 +63,10 @@ class view extends Views {
 
 ```php
 class view extends Views {
+  function __construct() {
+    parent::__construct();
+  }
+
   function hello_world() {
     //Send Files.
     return $this->send_file("cat.jpg");
@@ -67,6 +83,10 @@ class view extends Views {
 
 ```php
 class view extends Views {
+  function __construct() {
+    parent::__construct();
+  }
+
   function hello_world() {
     //Response string data
     return $this->response("hello");
@@ -78,6 +98,10 @@ class view extends Views {
 
 ```php
 class view extends Views {
+  function __construct() {
+    parent::__construct();
+  }
+
   function hello_world() {
     //Response string data with http response code
     return $this->response("404 Page not found !!", 404);
@@ -91,6 +115,10 @@ class view extends Views {
 
 ```php
 class view extends Views {
+  function __construct() {
+    parent::__construct();
+  }
+
   function hello_world() {
     //Response json data
     return $this->response_json(array("data" => "hello world"));
@@ -104,6 +132,10 @@ class view extends Views {
 
 ```php
 class view extends Views {
+  function __construct() {
+    parent::__construct();
+  }
+
   function hello_world() {
     //Response http response code
     return $this->response_code(404);
@@ -117,8 +149,11 @@ class view extends Views {
 
 ```php
 class view extends Views {
-  function hello_world() {
+  function __construct() {
+    parent::__construct();
+  }
 
+  function hello_world() {
     //Set Response Header
     $this->response_header("Content-Type: application/json");
 
@@ -130,17 +165,24 @@ class view extends Views {
 
 ### Use Models
 
-  Create a model Test and include models file in views file.
+  Create a model blog and include models file in views file.
 
 ```php
 //Include models file
 require_once('models.php');
 
 class view extends Views {
-  function demo() {
+  private $blog;
+
+  function __construct() {
+    parent::__construct();
+
     //Create model object
-    $test = new Test();
-    return $this->response($test->get_data());
+    $this->blog = new blog_model();
+  }
+
+  function demo() {
+    return $this->response($test->blog->get_data());
   }
 }
 ```
