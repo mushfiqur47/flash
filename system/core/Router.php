@@ -359,8 +359,6 @@ class Router{
       $method=$views['method'];
       //Check in views class method exists or not
       if(method_exists($this->view, $method)) {
-        //Initialize view
-        $this->view->__init();
         //Call the views method
         $this->view->$method(...$pathVariables);
       } else {
