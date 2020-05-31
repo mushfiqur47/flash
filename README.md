@@ -45,6 +45,11 @@ Flash allows user to create web applications in easy and simplest way, in Flash 
 
 ```php
 class view extends Views {
+
+  function __construct() {
+    parent::__construct();
+  }
+
   function hello_world() {
     return $this->response("hello, world !!");
   }
@@ -79,6 +84,11 @@ $urlpatterns=[
 
 ```php
 class view extends Views {
+
+  function __construct() {
+    parent::__construct();
+  }
+
   function hello_world() {
     $data = [
       'status' => true,
