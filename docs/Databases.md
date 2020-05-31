@@ -59,8 +59,12 @@ class model Models {
 
 ```php
 class blog_model extends Models {
-  function get_data() {
+  function __construct() {
+    //database connection
     $this->connect('blog_db');
+  }
+
+  function get_data() {
     //select data from blog_db
     $result = $this->blog_db->query('select * from blog');
     $this->blog_db->close();
