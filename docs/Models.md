@@ -18,12 +18,9 @@ class blog extends Models {
   }
 
   function get_data() {
-
     $result = $this->db->query('select * from blog');
-
     //close database connection
     $this->db->close();
-
     return $result;
   }
 }
@@ -61,11 +58,18 @@ class blog extends Models {
 require_once('models.php');
 
 class view extends Views{
-  function home() {
+  private $blog;
+
+  function __construct() {
+    parent::__construct();
+
     //create model object
-    $blog = new blog();
+    $this->blog = new blog();
+  }
+
+  function home() {
     //get data from model
-    foreach($blog->get_data() as $data) {
+    foreach($this->blog->get_data() as $data) {
       $blog_data[] = $data;
     }
     //response data
