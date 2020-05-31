@@ -58,7 +58,7 @@ class Views{
   public $media;
 
   //Initialize all objects.
-  function __init() {
+  function __construct() {
     //Initialize Configuration object.
     $this->config=new Config();
 
