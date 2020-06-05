@@ -16,13 +16,13 @@ Flash allows user to create web applications in easy and simplest way, in Flash 
 
 Flash is fast and lightweight php web framework. Flash framework is very simple and easy to learn. even if you are new in web development don't worry you will love this framework.
 
-  - Fast and powerful web framework.
+  - Fast and Powerful.
   - Extremely Light Weight.
   - MVT Architecture.
   - You can build RESTful APIs faster.
   - Security and XSS Filtering.
-  - Simple and easy to learn.
-  - Easy to deploy on any server.
+  - Simple and Easy to learn.
+  - Easy to Deploy on any server.
 
 ### Flash architecture
 
