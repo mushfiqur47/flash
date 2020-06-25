@@ -242,7 +242,7 @@ class Views{
       //Check string data type.
       if(is_array($data)) {
         echo json_encode($data);
-      } else if($this->is_json($data)){
+      } else if($this->is_json($data)) {
         echo $data;
       } else {
         echo json_encode(array($data));
@@ -254,7 +254,7 @@ class Views{
   * Render templates
   * Render the HTML templates.
   */
-  protected function render(string $template, array $user_variable=NULL){
+  protected function render(string $template, array $user_variable=NULL) {
     //Set variables of array.
     if(is_array($user_variable)) {
       foreach($user_variable as $variable => $value) {
