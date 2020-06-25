@@ -223,7 +223,7 @@ class Views{
   * Check Json format is valid or not.
   */
   protected function is_json($data) {
-    return is_array($data) ? false : is_array(json_decode($str,true));
+    return is_array($data) ? false : is_array(json_decode($data, true));
   }
   
   /**
