@@ -211,6 +211,7 @@ class user_agent{
       return 'UNKNOWN';
     } else if($this->os == 'Windows') {
       $data= array(
+        '/windows nt 10.0/i' => 'Windows 10',
         '/windows nt 6.2/i' => 'Windows 8',
         '/windows nt 6.1/i' => 'Windows 7',
         '/windows nt 6.0/i' => 'Windows Vista',
