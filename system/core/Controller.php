@@ -30,6 +30,7 @@ class Views{
   //URI library object
   public $uri;
   //Input library object
+  public $input;
   public $get;
   public $post;
   public $put;
@@ -78,6 +79,7 @@ class Views{
     * Input Library
     * Initialize all objects of system input library.
     */
+    $this->input=new input_request_data();
     $this->get=new get_request_data();
     $this->post=new post_request_data();
     $this->put=new put_request_data();
