@@ -23,7 +23,7 @@ $setting['debug'] = TRUE;
 * Example :
 *    $library = [
 *        '/application/library/login',
-*        '/application/library/user_authentication' => 'user',
+*        '/application/library/user_authentication' => 'user_auth',
 *    ];
 *
 * Add your library path in 'library' array to install and use libraries in your application.
@@ -41,7 +41,7 @@ $library = [];
 * Example :
 *    $service = [
 *        '/application/service/login',
-*        '/application/service/user_authentication',
+*        '/application/service/user_authentication' => 'user_auth',
 *    ];
 *
 * Add your service path in 'service' array to install and use service's in your application.
@@ -59,7 +59,7 @@ $service = [];
 * Example :
 *    $install = [
 *        'system.request',
-*        'system.user_agent' => 'user'
+*        'system.user_agent'
 *    ];
 *
 * Add any system libraries and apps in 'install' array to install and use system libraries in your application.
