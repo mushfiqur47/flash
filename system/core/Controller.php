@@ -282,7 +282,10 @@ class Views{
     if($template_path) {
       return require_once($template_path);
     } else {
-      exit("'$template' : template does not exists");
+      http_response_code(404);
+      if($this->config->setting['debug']) {
+        exit("'$template' : template does not exists");
+      }
     }
   }
   
@@ -305,7 +308,10 @@ class Views{
       }
       return readfile($file_path);
     } else {
-      exit("'$file_path' : file does not exists");
+      http_response_code(404);
+      if($this->config->setting['debug']) {
+        exit("'$file_path' : file does not exists");
+      }
     }
   }
 
@@ -347,7 +353,10 @@ class Views{
       flush(); //Flush system output buffer
       return readfile($file_path);
     } else {
-      exit("'$file_path' : file does not exists");
+      http_response_code(404);
+      if($this->config->setting['debug']) {
+        exit("'$file_path' : file does not exists");
+      }
     }
   }
 }
