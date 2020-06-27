@@ -234,7 +234,6 @@ class user_agent{
       $data = array(
         '/macintosh|mac os x/i' => 'Mac OS X',
         '/mac_powerpc/i' => 'Mac OS 9',
-        '/ubuntu/i' => 'Ubuntu',
         '/linux X86_64/i' => 'Linux 64-Bit',
         '/linux i386/i' => 'Linux 32-Bit',
         '/linux i686/i' => 'Linux 32-Bit'
@@ -318,6 +317,7 @@ else {
       '/android/i' => 'Phone',
       '/windows|win32/i' => 'Desktop',
       '/macintosh|mac os x|mac_powerpc/i' => 'Desktop',
+      '/linux/i' => 'Desktop',
     );
     foreach($data as $pattern => $type){
       if(preg_match($pattern, $this->ua)){
@@ -331,6 +331,7 @@ else {
   function get_device_brand() {
     $data = array(
       '/iPhone|iPad|iPod/i' => 'Apple',
+      '/macintosh/i' => 'Apple',
       '/SAMSUNG|SM-/i' => 'Samsung',
       '/Sony/i' => 'Sony',
       '/LG/i' => 'LG',
@@ -343,8 +344,7 @@ else {
       '/Panasonic/i' => 'Panasonic',
       '/OnePlus/i' => 'OnePlus',
       '/Nokia/i' => 'Nokia',
-      '/Motorola/i' => 'Motorola',
-      '/moto/i' => 'Motorola',
+      '/Motorola|moto/i' => 'Motorola',
       '/Meizu/i' => 'Meizu',
       '/Lava/i' => 'Lava',
       '/intex/i' => 'intex',
